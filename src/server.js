@@ -1,8 +1,8 @@
 'use strict';
 
-require('babel/register')({
-    stage: 0
-});
+//require('babel/register')({
+//    stage: 0
+//});
 
 var express = require('express');
 var http = require('http');
@@ -28,10 +28,12 @@ var path = require('path');
  }));*/
 
 // ---- Routes ----
-app.get('/', function(req, res){
-    return {
-        data: {}
-    }
+app.get('/api/foo', function(req, res) {
+    res.json({
+        data: {
+            text: "bar"
+        }
+    });
 });
 
 

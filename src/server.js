@@ -6,8 +6,8 @@
 
 var express = require('express');
 var http = require('http');
-//var bodyParser = require('body-parser');
-
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 
 var PORT = process.env.PORT || 3000;
 
@@ -15,17 +15,10 @@ var app = exports.app = express();
 var server = http.createServer(app);
 var path = require('path');
 
-// Templates
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
-
-// Make pretty HTML:
-//app.locals.pretty = true;
-
 // body parser - to get parameters from post request:
 /*app.use(bodyParser.urlencoded({
- extended: true
- }));*/
+    extended: true
+}));*/
 
 // ---- Routes ----
 app.get('/api/foo', function(req, res) {
@@ -34,6 +27,12 @@ app.get('/api/foo', function(req, res) {
             text: "bar"
         }
     });
+});
+
+app.post('/api/foo', jsonParser, function (req, res) {
+    if (!req.body) return res.sendStatus(400);
+    console.log('got data:', req.body);
+    return res.sendStatus(200);
 });
 
 

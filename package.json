@@ -21,6 +21,7 @@
     "babel-core": "^6.2.1",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "moment": "^2.10.6",
     "nodemon": "^1.8.1"
   }
 }

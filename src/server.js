@@ -30,9 +30,9 @@ app.get('/api/foo', function(req, res) {
 });
 
 app.post('/api/foo', jsonParser, function (req, res) {
-    if (!req.body) return res.sendStatus(400);
+    if (!req.body) return res.status(400).send({"error": "missing body"});
     console.log('got data:', req.body);
-    return res.sendStatus(200);
+    return res.status(200).send({"status": "awesome"});
 });
 
 

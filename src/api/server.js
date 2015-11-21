@@ -8,7 +8,6 @@
 
     var express = require("express");
     var http = require("http");
-    var crypto = require("crypto");
 
     var PORT = process.env.PORT || 3000;
 

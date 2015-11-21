@@ -1,5 +1,6 @@
 var Configurer = function () {
     var moment = require("moment");
+    var crypto = require("crypto");
 
     var bodyParser = require("body-parser");
     var jsonParser = bodyParser.json();
@@ -12,6 +13,14 @@ var Configurer = function () {
         for (var i = 0; i < parkings.length; i++) {
             if (parkings[i].id === userid && !isParkingEnded(parkings[i])) {
                 return parkings[i];
+            }
+        }
+    };
+    
+    var findUser = function (userid) {
+        for (var i = 0; i < registeredUsers.length; i++) {
+            if (registeredUsers[i].id === userid) {
+                return registeredUsers[i];
             }
         }
     };
@@ -42,7 +51,27 @@ var Configurer = function () {
             console.log("Response: ", newCustomer);
             return res.status(200).send(newCustomer);
         });
+        
+        app.get("/api/username", jsonParser, function (req, res) {
+            console.log("GET /api/username");
+            console.log("GET /api/username. Query: ", req.query);
+            if (!req.query) {
+                var missingQuery = {"error": "missing query string"};
+                console.log("Response: ", missingQuery);
+                return res.status(400).send(missingQuery);
+            }
 
+            var user = findUser(req.query.id);
+            if (!user) {
+                var userNotFound = {"error": "user not found"};
+                console.log("Response: ", userNotFound);
+                return res.status(400).send(userNotFound);
+            }
+
+            console.log("Response: ", user);
+            return res.status(200).send(user);
+        })
+        
         app.get("/api/price", jsonParser, function (req, res) {
             console.log("GET /api/price");
             console.log("Response: ", pricePerSecond);

@@ -92,8 +92,8 @@ app.post("/api/price", jsonParser, function (req, res) {
     return res.status(200).send({price: pricePerSecond});
 });
 
-app.get("/api/parked", jsonParser, function (req, res) {
-    console.log("GET /api/parked");
+app.get("/api/parkings", jsonParser, function (req, res) {
+    console.log("GET /api/parkings");
     console.log("Response: ", JSON.stringify(parkings));
     return res.status(200).send(parkings);
 });

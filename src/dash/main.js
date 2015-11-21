@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from './components/logo.jsx';
 import List from './components/list.jsx';
+import Navigation from './components/navigation.jsx';
+import PriceForm from './components/price-form.jsx';
 import { httpGet, httpPost } from './modules/json-client.js';
 import ParkrActions from './alt/parkr-actions.js';
 import ParkrStore from './alt/parkr-store.js';
@@ -11,7 +13,9 @@ class App extends React.Component {
         super();
 
         this.state = {
-            newPrice: undefined
+            selected: 0,
+            newPrice: undefined,
+            items: ['Parkerte biler', 'Betalinger', 'Pris']
         };
 
         this._onState = this._onState.bind(this);
@@ -33,46 +37,44 @@ class App extends React.Component {
             parked: newState.parked,
             finished: newState.finished
         });
-    };
+    }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit() {
         ParkrActions.setPrice(this.state.newPrice);
-    };
+    }
 
-    handleChange(event) {
+    handleChange(value) {
         this.setState({
-            newPrice: event.target.value
+            newPrice: value
         });
-    };
+    }
+
+    handleNavChange(index) {
+        this.setState({
+            selected: index
+        });
+    }
 
     render () {
+
+        let contentParked = (<List title="Parkerte biler" cars={this.state.parked}></List>);
+        let contentPayment = (<List title="Betalinger" cars={this.state.finished}></List>);
+        let contentPrice = (<PriceForm
+            price={this.state.price}
+            handleSubmit={this.handleSubmit.bind(this)}
+            handleChange={this.handleChange.bind(this)}>
+        </PriceForm>);
+
         return(<div>
             <Logo></Logo>
-            
-
             <div className="row">
-                <div className="small-12 medium-6 columns">
-                    <List title="Parkerte biler" cars={this.state.parked}></List>
-                </div>
-                <div className="small-12 medium-6 columns">
-                    <List title="Betalinger" cars={this.state.finished}></List>
+                <div className="small-12 medium-6 small-centered columns">
+                    <Navigation items={this.state.items} onNavChange={this.handleNavChange.bind(this)}></Navigation>
+                    { (this.state.selected === 0) ? contentParked : undefined }
+                    { (this.state.selected === 1) ? contentPayment : undefined }
+                    { (this.state.selected === 2) ? contentPrice : undefined }
                 </div>
             </div>
-            <div className="row">
-                <div className="small-12 medium-6 columns">
-                    <form onSubmit={this.handleSubmit.bind(this)}>
-                        {
-                            this.state.price ? (
-                                <p>Gjeldende pris: <em>{this.state.price}</em></p>
-                            ) : undefined
-                        }
-                        <input type="number" value={ this.state.newPrice } onChange={this.handleChange.bind(this)} />
-                        <input type="submit" value="Oppdater pris" className="button" />
-                    </form>
-                </div>
-            </div>
-
         </div>)
     }
 }

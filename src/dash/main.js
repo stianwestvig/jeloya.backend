@@ -9,7 +9,7 @@ class App extends React.Component {
   render () {
     return(<div>
         <Logo></Logo>
-        <div>changed</div>
+        <div>changed 3</div>
 
 
     </div>)

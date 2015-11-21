@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
 
     render() {
         return(
-            <a href="/">
+            <a className="logo" href="/">
                 <img
                     alt="parkr"
                     src="parkr.png"

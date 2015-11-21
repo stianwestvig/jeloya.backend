@@ -22,9 +22,9 @@ var parkings = [];
 var pricePerSecond = 1;
 var customers = [];
 
-var findCurrentParking = function (user) {
+var findCurrentParking = function (userid) {
     for (var i = 0; i < parkings.length; i++) {
-        if (parkings[i].user === user && !isEndedParking(parkings[i])) {
+        if (parkings[i].id === userid && !isEndedParking(parkings[i])) {
             return parkings[i];
         }
     }
@@ -56,7 +56,6 @@ var generateGuid = function () {
  }));*/
 
 // ---- Routes ----
-
 app.post("/api/register", jsonParser, function (req, res) {
     console.log("POST /api/register. Body: ", req.body);
     if (!req.body) {
@@ -64,9 +63,8 @@ app.post("/api/register", jsonParser, function (req, res) {
         console.log("Response: ", missingBody);
         return res.status(400).send(missingBody);
     }
-    var guid = generateGuid();
-    console.log("Guid is: ", guid);
 
+    var guid = generateGuid();
     var newCustomer = {name: req.body.name, email: req.body.email, id: guid};
     customers.push(newCustomer)
     console.log("Response: ", newCustomer);
@@ -106,7 +104,7 @@ app.post("/api/park", jsonParser, function (req, res) {
         return res.status(400).send(missingBody);
     }
 
-    var currentParking = findCurrentParking(req.body.user);
+    var currentParking = findCurrentParking(req.body.id);
     if (currentParking) {
         var alreadyParked = {"error": "already parked"};
         console.log("Response: ", alreadyParked);
@@ -114,7 +112,7 @@ app.post("/api/park", jsonParser, function (req, res) {
     }
 
     var parking = {
-        user: req.body.user,
+        id: req.body.id,
         start: moment()
     };
 
@@ -131,7 +129,7 @@ app.post("/api/endpark", jsonParser, function (req, res) {
         return res.status(400).send(missingBody);
     }
 
-    var currentParking = findCurrentParking(req.body.user);
+    var currentParking = findCurrentParking(req.body.id);
 
     if (!currentParking) {
         var notParked = {"error": "not parked"};

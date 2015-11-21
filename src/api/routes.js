@@ -139,7 +139,12 @@ var Configurer = function () {
             }
 
             var parking = currentParking;
+
             parking.end = moment();
+
+            var parkTimeInSeconds = moment.duration(parking.end.diff(parking.start))/1000;
+            parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
+
             console.log("Response: ", JSON.stringify(parking));
             return res.status(200).json(parking);
         });

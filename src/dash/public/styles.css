@@ -1,10 +1,38 @@
 body {
-  background-color: #FCFCFC; }
+  background-color: #fff; }
 
 .logo {
-  margin-bottom: 30px; }
+  margin: 50px 0; }
   .logo img {
     max-width: 400px; }
+  .logo h1 {
+    color: #15A8E2; }
+    .logo h1:hover {
+      color: #15A8E2; }
 
 .button {
-  background-color: #26A9E0; }
+  background-color: #15A8E2; }
+
+.navigation {
+  list-style: none;
+  margin-left: 0;
+  overflow: hidden; }
+  .navigation li {
+    float: left;
+    margin-right: 30px; }
+    .navigation li:hover {
+      cursor: pointer;
+      color: #15A8E2; }
+  .navigation .circle {
+    border-color: #15A8E2;
+    border-radius: 50%;
+    width: 100px; }
+
+.list, .price-form {
+  padding: 20px;
+  background-color: #4A4A4A;
+  color: white; }
+
+.list ul {
+  list-style: none;
+  margin-left: 0; }

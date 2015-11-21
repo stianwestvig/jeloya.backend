@@ -22,7 +22,7 @@ export default class Navigation extends React.Component {
         }
 
         return(
-            <ul>
+            <ul className="navigation">
                 { items }
             </ul>
         );

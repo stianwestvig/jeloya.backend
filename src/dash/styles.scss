@@ -1,17 +1,27 @@
 
-$color-parkr-blue: #26A9E0;
+
+$color-parkr-blue: #15A8E2;
+$color-parkr-teal: #9EC9DA;
+$color-parkr-dark: #4A4A4A;
 
 
 body {
-  background-color: #FCFCFC;
+  background-color: #fff;
 }
 
-
 .logo {
-  margin-bottom: 30px;
+  margin: 50px 0;
 
   img {
     max-width: 400px;
+  }
+
+  h1 {
+    color: $color-parkr-blue;
+
+    &:hover {
+      color: $color-parkr-blue;
+    }
   }
 }
 
@@ -19,6 +29,41 @@ body {
   background-color: $color-parkr-blue;
 }
 
+.navigation {
+  list-style: none;
+  margin-left: 0;
+  overflow: hidden;
 
+  li {
+    float: left;
+    margin-right: 30px;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-parkr-blue;
+    }
+  }
+
+  .circle {
+    border-color: $color-parkr-blue;
+    border-radius: 50%;
+    width: 100px;
+  }
+}
+
+.list, .price-form {
+  padding: 20px;
+  background-color: $color-parkr-dark;
+  color: white;
+}
+
+.list ul {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+
+  }
+}
 
 

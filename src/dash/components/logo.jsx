@@ -15,8 +15,9 @@ export default class Logo extends React.Component {
                         <a href="/">
                             <img
                                 alt="parkr"
-                                src="parkr.png"
+                                src="parkr-white.svg"
                              />
+                            <h1>parkr managr</h1>
                         </a>
                     </div>
                 </div>

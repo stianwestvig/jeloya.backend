@@ -16,12 +16,11 @@ export default class ListItem extends React.Component {
         let start = startMoment.format(formatString);
         let end = endMoment.format(formatString);
 
-
         return(
 
             <div>
                 <tr>
-                    <td><em>Bruker:</em> { this.props.car.user ? this.props.car.user : this.props.car.id }</td>
+                    <td><em>Bruker:</em> { this.props.car.user.name ? this.props.car.user.name : this.props.car.user.id }</td>
                     <td><em>Inn:</em> { start }</td>
                 </tr>
                 <tr>

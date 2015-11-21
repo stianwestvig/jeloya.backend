@@ -51,7 +51,14 @@ var Configurer = function () {
             console.log("Response: ", newCustomer);
             return res.status(200).send(newCustomer);
         });
-        
+
+        app.get("/api/registered", jsonParser, function (req, res) {
+            console.log("GET /api/registered");
+
+            console.log("Response: ", registeredUsers);
+            return res.status(200).send(registeredUsers);
+        });
+
         app.get("/api/username", jsonParser, function (req, res) {
             console.log("GET /api/username");
             console.log("GET /api/username. Query: ", req.query);

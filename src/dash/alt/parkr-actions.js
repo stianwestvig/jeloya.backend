@@ -1,7 +1,7 @@
 import alt from './alt.js';
 import { httpGet, httpPost } from '../modules/json-client.js';
 
-let baseUrl = 'http://10.10.2.35:3000/api/';
+let baseUrl = 'https://park0r.herokuapp.com/api/';
 
 class ParkrActions {
 

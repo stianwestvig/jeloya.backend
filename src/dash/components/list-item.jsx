@@ -11,8 +11,10 @@ export default class ListItem extends React.Component {
     render() {
 
         let formatString = 'D. MMM  -  hh:mm';
-        let start = this.props.car.start.format(formatString);
-        let end = this.props.end ? this.props.end.format(formatString) : undefined;
+        let startMoment = moment(this.props.car.start);
+        let endMoment = moment(this.props.car.end);
+        let start = startMoment.format(formatString);
+        let end = endMoment.format(formatString);
 
 
         return(
@@ -24,7 +26,7 @@ export default class ListItem extends React.Component {
                 </tr>
                 <tr>
                     <td><em>Betalt:</em> { this.props.car.price ? this.props.car.price : '200,-' }</td>
-                    <td><em>Ut:</em> { moment().format(formatString) }</td>
+                    <td><em>Ut:</em> { end }</td>
                 </tr>
             </div>
 

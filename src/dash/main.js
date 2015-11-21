@@ -68,7 +68,7 @@ class App extends React.Component {
         return(<div>
             <Logo></Logo>
             <div className="row">
-                <div className="small-12 medium-6 small-centered columns">
+                <div className="small-12 medium-8 small-centered columns">
                     <Navigation items={this.state.items} onNavChange={this.handleNavChange.bind(this)}></Navigation>
                     { (this.state.selected === 0) ? contentParked : undefined }
                     { (this.state.selected === 1) ? contentPayment : undefined }

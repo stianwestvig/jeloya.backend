@@ -77,14 +77,13 @@ body {
         background-color: transparent;
         border-bottom: 1px solid $color-parkr-teal;
       }
-      
-      td {
-        em {
-          font-style: normal;
-          font-weight: bold;
-          margin-right: 10px;
-        }
-      }
+
+    }
+
+    em {
+      font-style: normal;
+      font-weight: bold;
+      margin-right: 10px;
     }
   }
 }

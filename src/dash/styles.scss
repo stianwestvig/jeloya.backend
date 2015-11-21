@@ -32,15 +32,17 @@ body {
 .navigation {
   list-style: none;
   margin-left: 0;
-  overflow: hidden;
+
+  display: flex;
+
 
   li {
-    float: left;
-    margin-right: 30px;
+    flex: 1 0 auto;
+    font-size: 20px;
 
     &:hover {
       cursor: pointer;
-      color: $color-parkr-blue;
+      //color: $color-parkr-blue;
     }
   }
 
@@ -57,12 +59,33 @@ body {
   color: white;
 }
 
-.list ul {
+.list {
   list-style: none;
   margin-left: 0;
 
-  li {
+  table {
+    width: 100%;
 
+    tbody {
+      background-color: transparent;
+      border-top: none;
+      border-right: none;
+      border-bottom: 1px solid $color-parkr-teal;
+      border-left: none;
+
+      tr:nth-child(even) {
+        background-color: transparent;
+        border-bottom: 1px solid $color-parkr-teal;
+      }
+      
+      td {
+        em {
+          font-style: normal;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
 

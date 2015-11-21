@@ -17,7 +17,7 @@ export default class Navigation extends React.Component {
 
         if(this.props.items){
             items = this.props.items.map(function (item, index) {
-                return (<li key={index} onClick={that.handleClick.bind(that, index)}>{item}</li>)
+                return (<li className="button" key={index} onClick={that.handleClick.bind(that, index)}>{item}</li>)
             });
         }
 

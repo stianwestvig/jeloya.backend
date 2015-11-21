@@ -34,10 +34,9 @@ export default class List extends React.Component {
         return(
             <div className="list">
                 <h3>{this.props.title}</h3>
-                <ul>
+                <table>
                     {cars}
-                    <div className="circle"></div>
-                </ul>
+                </table>
             </div>
         );
     }

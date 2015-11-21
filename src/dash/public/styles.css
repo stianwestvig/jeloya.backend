@@ -16,13 +16,12 @@ body {
 .navigation {
   list-style: none;
   margin-left: 0;
-  overflow: hidden; }
+  display: flex; }
   .navigation li {
-    float: left;
-    margin-right: 30px; }
+    flex: 1 0 auto;
+    font-size: 20px; }
     .navigation li:hover {
-      cursor: pointer;
-      color: #15A8E2; }
+      cursor: pointer; }
   .navigation .circle {
     border-color: #15A8E2;
     border-radius: 50%;
@@ -33,6 +32,21 @@ body {
   background-color: #4A4A4A;
   color: white; }
 
-.list ul {
+.list {
   list-style: none;
   margin-left: 0; }
+  .list table {
+    width: 100%; }
+    .list table tbody {
+      background-color: transparent;
+      border-top: none;
+      border-right: none;
+      border-bottom: 1px solid #9EC9DA;
+      border-left: none; }
+      .list table tbody tr:nth-child(even) {
+        background-color: transparent;
+        border-bottom: 1px solid #9EC9DA; }
+      .list table tbody td em {
+        font-style: normal;
+        font-weight: bold;
+        margin-right: 10px; }

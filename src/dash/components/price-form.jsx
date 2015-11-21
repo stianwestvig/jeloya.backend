@@ -19,6 +19,7 @@ export default class PriceForm extends React.Component {
     render() {
         return(
             <form className="price-form" onSubmit={this.handleSubmit.bind(this)}>
+                <h3>Sett ny pris</h3>
                 {
                     this.props.price ? (
                         <p>Gjeldende pris: <em>{this.props.price}</em></p>

@@ -5,7 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/server.js",
+    "dash": "nodemon ./src/dashboard/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,21 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "moment": "^2.10.6",
-    "nodemon": "^1.8.1"
+    "nodemon": "^1.8.1",
+    "react": "^0.14.3"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "uglifyify": "^3.0.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
   }
 }

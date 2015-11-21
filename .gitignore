@@ -303,3 +303,6 @@ $RECYCLE.BIN/
 
 # Webstorm
 .idea/
+
+#VS Code
+.vscode/

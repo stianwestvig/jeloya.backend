@@ -17,7 +17,7 @@ var app = exports.app = express();
 var server = http.createServer(app);
 var path = require('path');
 
-var parkedCars = [];
+var parkings = [];
 
 // body parser - to get parameters from post request:
 /*app.use(bodyParser.urlencoded({
@@ -25,12 +25,9 @@ var parkedCars = [];
 }));*/
 
 // ---- Routes ----
-app.get('/api/foo', function(req, res) {
-    res.json({
-        data: {
-            text: "bar"
-        }
-    });
+
+app.get('/api/parked', jsonParser, function (req, res) {
+    return res.status(200).send(parkings);
 });
 
 app.post('/api/park', jsonParser, function (req, res) {
@@ -41,8 +38,26 @@ app.post('/api/park', jsonParser, function (req, res) {
         start: moment()
     };
 
-    parkedCars.push(parking);
+    parkings.push(parking);
     return res.status(200).send(parking);
+});
+
+app.post('/api/endpark', jsonParser, function (req, res) {
+    if (!req.body) return res.status(400).send({"error": "missing body"});
+    var parking;
+    for(var i = 0; i < parkings.length; i++) {
+        if(parkings[i].user === req.body.user) {
+            parking = parkings[i];
+            break;
+        }
+    }
+
+    if (typeof(parking) === 'undefined') {
+        res.status(400);
+    }
+
+    parking.end = moment();
+    return res.status(200).json(parking);
 });
 
 

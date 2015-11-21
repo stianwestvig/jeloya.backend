@@ -35,18 +35,11 @@ body {
 .list {
   list-style: none;
   margin-left: 0; }
-  .list table {
-    width: 100%; }
-    .list table tbody {
-      background-color: transparent;
-      border-top: none;
-      border-right: none;
-      border-bottom: 1px solid #9EC9DA;
-      border-left: none; }
-      .list table tbody tr:nth-child(even) {
-        background-color: transparent;
-        border-bottom: 1px solid #9EC9DA; }
-    .list table em {
-      font-style: normal;
-      font-weight: bold;
-      margin-right: 10px; }
+  .list .entry {
+    background-color: transparent;
+    border-bottom: 1px solid #9EC9DA;
+    padding: 10px; }
+  .list em {
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px; }

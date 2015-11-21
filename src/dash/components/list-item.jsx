@@ -17,21 +17,19 @@ export default class ListItem extends React.Component {
         let end = endMoment.format(formatString);
 
         return(
+            <div className="small-12 columns entry">
 
-            <div>
-                <tr>
-                    <td><em>Bruker:</em> { this.props.car.user.name ? this.props.car.user.name : this.props.car.user.id }</td>
-                    <td><em>Inn:</em> { start }</td>
-                </tr>
-                { this.props.car.end
-                    ? (<tr>
-                        <td><em>Betalt:</em> { this.props.car.price ? this.props.car.price : '200,-' }</td>
-                        <td><em>Ut:</em> { end }</td>
-                    </tr>)
-                    : undefined }
-
+            <div className="row">
+                <div className="small-6 columns"><em>Bruker:</em> { this.props.car.user.name ? this.props.car.user.name : this.props.car.user.id }</div>
+                <div className="small-6 columns"><em>Inn:</em> { start }</div>
             </div>
-
+            { this.props.car.end
+                ? (<div className="row">
+                    <div className="small-6 columns"><em>Betalt:</em> { this.props.car.price ? this.props.car.price : '200,-' }</div>
+                    <div className="small-6 columns"><em>Ut:</em> { end }</div>
+                </div>)
+                : undefined }
+            </div>
         );
     }
 }

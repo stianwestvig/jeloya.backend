@@ -20,9 +20,9 @@ export default class List extends React.Component {
         return(
             <div className="list">
                 <h3>{this.props.title}</h3>
-                <table>
+                <div className="row">
                     {cars}
-                </table>
+                </div>
             </div>
         );
     }

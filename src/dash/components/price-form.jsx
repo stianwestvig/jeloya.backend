@@ -22,11 +22,11 @@ export default class PriceForm extends React.Component {
                 <h3>Sett ny pris</h3>
                 {
                     this.props.price ? (
-                        <p>Gjeldende pris: <em>{this.props.price}</em></p>
+                        <p>Gjeldende pris: <em>{this.props.price}</em> kroner pr. minutt</p>
                     ) : undefined
                 }
                 <input type="number" value={ this.state.newPrice } onChange={this.handleChange.bind(this)} />
-                <input type="submit" value="Oppdater pris" className="button" />
+                <input type="submit" value="Sett ny pris" className="button" />
             </form>
         );
     }

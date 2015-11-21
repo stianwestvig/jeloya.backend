@@ -63,29 +63,18 @@ body {
   list-style: none;
   margin-left: 0;
 
-  table {
-    width: 100%;
-
-    tbody {
-      background-color: transparent;
-      border-top: none;
-      border-right: none;
-      border-bottom: 1px solid $color-parkr-teal;
-      border-left: none;
-
-      tr:nth-child(even) {
-        background-color: transparent;
-        border-bottom: 1px solid $color-parkr-teal;
-      }
-
-    }
-
-    em {
-      font-style: normal;
-      font-weight: bold;
-      margin-right: 10px;
-    }
+  .entry {
+    background-color: transparent;
+    border-bottom: 1px solid $color-parkr-teal;
+    padding: 10px;
   }
+
+  em {
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
 }
 
 

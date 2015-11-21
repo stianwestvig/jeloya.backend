@@ -32,6 +32,7 @@ export class ParkrStore {
             httpGet(url, {id: car.id})
                 .catch(err => console.error('#handleGetParkings', err))
                 .then(res => car.user = res.body);
+            return car;
         });
 
         let finished = payload.filter(isFinishedParking);

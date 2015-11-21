@@ -120,7 +120,7 @@ var Configurer = function () {
             }
 
             var parking = {
-                id: req.body.id,
+                user: findUser(req.body.id),
                 start: moment()
             };
 

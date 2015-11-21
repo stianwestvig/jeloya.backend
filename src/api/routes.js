@@ -15,7 +15,7 @@ var Configurer = function () {
 
     var findCurrentParking = function (userid) {
         for (var i = 0; i < parkings.length; i++) {
-            if (parkings[i].id === userid && !isParkingEnded(parkings[i])) {
+            if (parkings[i].user.id === userid && !isParkingEnded(parkings[i])) {
                 return parkings[i];
             }
         }
@@ -133,25 +133,6 @@ var Configurer = function () {
             return res.status(200).send(parking);
         });
 
-        app.post("/api/status", jsonParser, function (req, res) {
-            console.log("POST /api/status. Body: ", req.body);
-            if (!req.body) {
-                var missingBody = {"error": "missing body"};
-                console.log("Response: ", missingBody);
-                return res.status(400).send(missingBody);
-            }
-
-            var currentParking = findCurrentParking(req.body.id);
-            var isParked = currentParking ? true : false;
-            var status = {
-                isParked: isParked,
-                price: isParked ? calculatePrice(currentParking) : 0
-            };
-
-            console.log("Response: ", status);
-            return res.status(200).send(status);
-        });
-
         app.post("/api/endpark", jsonParser, function (req, res) {
             console.log("POST /api/endpark. Body: ", req.body);
             if (!req.body) {
@@ -175,6 +156,25 @@ var Configurer = function () {
 
             console.log("Response: ", JSON.stringify(parking));
             return res.status(200).json(parking);
+        });
+
+        app.post("/api/status", jsonParser, function (req, res) {
+            console.log("POST /api/status. Body: ", req.body);
+            if (!req.body) {
+                var missingBody = {"error": "missing body"};
+                console.log("Response: ", missingBody);
+                return res.status(400).send(missingBody);
+            }
+
+            var currentParking = findCurrentParking(req.body.id);
+            var isParked = currentParking ? true : false;
+            var status = {
+                isParked: isParked,
+                price: isParked ? calculatePrice(currentParking) : 0
+            };
+
+            console.log("Response: ", status);
+            return res.status(200).send(status);
         });
     };
     return {

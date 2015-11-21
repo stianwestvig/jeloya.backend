@@ -1,4 +1,10 @@
+body {
+  background-color: #FCFCFC; }
+
 .logo {
   margin-bottom: 30px; }
   .logo img {
     max-width: 400px; }
+
+.button {
+  background-color: #26A9E0; }

@@ -4,16 +4,21 @@ export default class List extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     render() {
+        let cars = undefined;
+
+        if (this.props.cars)
+        cars = this.props.cars.map(function (car) {
+            return (<li>{car.id} - {car.start}</li>)
+        });
+
         return(
             <div>
                 <h3>{this.props.title}</h3>
                 <ul>
-                    <li>one</li>
-                    <li>two</li>
+                    {cars}
                 </ul>
             </div>
         );

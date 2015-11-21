@@ -1,3 +1,7 @@
+function calculatePrice(parking) {
+    var parkTimeInSeconds = moment.duration(parking.end.diff(parking.start)) / 1000;
+    parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
+}
 var Configurer = function () {
     var moment = require("moment");
     var crypto = require("crypto");
@@ -129,6 +133,25 @@ var Configurer = function () {
             return res.status(200).send(parking);
         });
 
+        app.post("/api/status", jsonParser, function (req, res) {
+            console.log("POST /api/status. Body: ", req.body);
+            if (!req.body) {
+                var missingBody = {"error": "missing body"};
+                console.log("Response: ", missingBody);
+                return res.status(400).send(missingBody);
+            }
+
+            var currentParking = findCurrentParking(req.body.id);
+            var isParked = currentParking ? true : false;
+            var status = {
+                isParked: isParked,
+                price: isParked ? calculatePrice(currentParking) : 0
+            };
+
+            console.log("Response: ", status);
+            return res.status(200).send(status);
+        });
+
         app.post("/api/endpark", jsonParser, function (req, res) {
             console.log("POST /api/endpark. Body: ", req.body);
             if (!req.body) {
@@ -148,9 +171,7 @@ var Configurer = function () {
             var parking = currentParking;
 
             parking.end = moment();
-
-            var parkTimeInSeconds = moment.duration(parking.end.diff(parking.start))/1000;
-            parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
+            parking.price = calculatePrice(parking);
 
             console.log("Response: ", JSON.stringify(parking));
             return res.status(200).json(parking);

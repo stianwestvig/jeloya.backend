@@ -303,7 +303,7 @@ $RECYCLE.BIN/
 
 # Webstorm / Stian
 .idea/
-/src/dash/public/
+# /src/dash/public/
 
 #VS Code
 .vscode/

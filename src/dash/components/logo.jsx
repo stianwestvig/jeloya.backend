@@ -9,12 +9,18 @@ export default class Logo extends React.Component {
 
     render() {
         return(
-            <a className="logo" href="/">
-                <img
-                    alt="parkr"
-                    src="parkr.png"
-                    width="300" />
-            </a>
+            <div className="logo">
+                <div className="row">
+                    <div className="small-12 small-centered medium-6 columns">
+                        <a href="/">
+                            <img
+                                alt="parkr"
+                                src="parkr.png"
+                             />
+                        </a>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

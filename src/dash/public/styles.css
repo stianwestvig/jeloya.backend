@@ -1,5 +1,4 @@
-body {
-  background-color: #fff; }
-
 .logo {
-  margin: 40px auto; }
+  margin-bottom: 30px; }
+  .logo img {
+    max-width: 400px; }

@@ -301,8 +301,10 @@ $RECYCLE.BIN/
 *.lnk
 
 
-# Webstorm
+# Webstorm / Stian
 .idea/
+/src/dash/public/
 
 #VS Code
 .vscode/
+

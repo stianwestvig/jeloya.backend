@@ -45,7 +45,7 @@ var Configurer = function () {
             return 0;
         }
 
-        var endMoment = parking ? parking.end : moment();
+        var endMoment = parking.end ? parking.end : moment();
         var elapsedSeconds = moment.duration(endMoment.diff(parking.start)) / 1000;
         return elapsedSeconds;
     };

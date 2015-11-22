@@ -37,13 +37,17 @@ var Configurer = function () {
     };
 
     var calculatePrice = function (parking) {
-        return Math.round(calculateElapsedSeconds(parking, false) * pricePerSecond);
+        return Math.round(calculateElapsedSeconds(parking) * pricePerSecond);
     };
 
-    var calculateElapsedSeconds = function (parking, doRounding) {
-        var endMoment = parking.end ? parking.end : moment();
+    var calculateElapsedSeconds = function (parking) {
+        if (! parking || !parking.start) {
+            return 0;
+        }
+
+        var endMoment = parking ? parking.end : moment();
         var elapsedSeconds = moment.duration(endMoment.diff(parking.start)) / 1000;
-        return doRounding ? Math.round(elapsedSeconds) : elapsedSeconds;
+        return elapsedSeconds;
     };
 
     var configure = function(app) {
@@ -198,7 +202,7 @@ var Configurer = function () {
             var status = {
                 isParked: isParked,
                 price: isParked ? calculatePrice(currentParking) : 0,
-                elapsed: calculateElapsedSeconds(currentParking, true)
+                elapsed: Math.round(calculateElapsedSeconds(currentParking))
             };
 
             console.log("Response: ", status);

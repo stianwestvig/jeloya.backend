@@ -44,6 +44,10 @@ body {
       cursor: pointer;
       //color: $color-parkr-blue;
     }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   .circle {

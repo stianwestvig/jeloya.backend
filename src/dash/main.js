@@ -58,7 +58,7 @@ class App extends React.Component {
     render () {
 
         let contentParked = (<List title="Parkerte biler" cars={this.state.parked}></List>);
-        let contentPayment = (<List title="Betalinger" cars={this.state.finished}></List>);
+        let contentPayment = (<List title="Betalinger" cars={this.state.finished} price={this.state.price}></List>);
         let contentPrice = (<PriceForm
             price={this.state.price}
             handleSubmit={this.handleSubmit.bind(this)}

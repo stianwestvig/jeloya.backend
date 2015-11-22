@@ -8,6 +8,16 @@ export default class ListItem extends React.Component {
         this.state = {};
     }
 
+    calculatePrice(start, end, price) {
+
+        if(!start || !end ||!price) {
+            return;
+        }
+
+        var parkTimeInSeconds = moment.duration(end.diff(start)) / 1000;
+        return Math.round(parkTimeInSeconds * price);
+    };
+
     render() {
 
         let formatString = 'D. MMM  -  hh:mm';
@@ -15,6 +25,7 @@ export default class ListItem extends React.Component {
         let endMoment = moment(this.props.car.end);
         let start = startMoment.format(formatString);
         let end = endMoment.format(formatString);
+        let calculatedPrice = this.calculatePrice(startMoment, endMoment, this.props.price);
 
         return(
             <div className="small-12 columns entry">
@@ -25,7 +36,7 @@ export default class ListItem extends React.Component {
             </div>
             { this.props.car.end
                 ? (<div className="row">
-                    <div className="small-6 columns"><em>Betalt:</em> { this.props.car.price ? this.props.car.price : '200,-' }</div>
+                    <div className="small-6 columns"><em>Betalt:</em> { calculatedPrice },-</div>
                     <div className="small-6 columns"><em>Ut:</em> { end }</div>
                 </div>)
                 : undefined }

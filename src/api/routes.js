@@ -53,7 +53,7 @@ var Configurer = function () {
 
             var guid = generateGuid();
             var newCustomer = {name: req.body.name, email: req.body.email, id: guid};
-            registeredUsers.push(newCustomer)
+            registeredUsers.push(newCustomer);
             console.log("Response: ", newCustomer);
             return res.status(200).send(newCustomer);
         });
@@ -83,7 +83,7 @@ var Configurer = function () {
 
             console.log("Response: ", user);
             return res.status(200).send(user);
-        })
+        });
         
         app.get("/api/price", jsonParser, function (req, res) {
             console.log("GET /api/price");
@@ -182,6 +182,6 @@ var Configurer = function () {
     return {
         configure: configure
     }
-}
+};
 
 module.exports = Configurer;

@@ -10,10 +10,11 @@ export default class List extends React.Component {
 
     render() {
         let cars = undefined;
+        let that = this;
 
         if (this.props.cars){
             cars = this.props.cars.map(function (car, index) {
-                return(<ListItem key={index} car={car}></ListItem>);
+                return(<ListItem key={index} car={car} price={that.props.price}></ListItem>);
             });
         }
 

@@ -16,7 +16,7 @@ var Configurer = function () {
             }
         }
     };
-    
+
     var findUser = function (userid) {
         for (var i = 0; i < registeredUsers.length; i++) {
             if (registeredUsers[i].id === userid) {
@@ -84,7 +84,7 @@ var Configurer = function () {
             console.log("Response: ", user);
             return res.status(200).send(user);
         });
-        
+
         app.get("/api/price", jsonParser, function (req, res) {
             console.log("GET /api/price");
             console.log("Response: ", pricePerSecond);
@@ -107,6 +107,27 @@ var Configurer = function () {
         app.get("/api/parkings", jsonParser, function (req, res) {
             console.log("GET /api/parkings");
             console.log("Response: ", JSON.stringify(parkings));
+            return res.status(200).send(parkings);
+        });
+
+        app.post("/api/userparkings", jsonParser, function (req, res) {
+
+            if (!req.body) {
+                var missingBody = {"error": "missing body"};
+                console.log("Response: ", missingBody);
+                return res.status(400).send(missingBody);
+            }
+
+            var userId = (req.body.id);
+            var curParkings = [];
+
+            for (var i = 0; i < parkings.length; i++) {
+                if (parkings[i].user.id === userid) {
+                    curParkings.push(parkings[i]);
+                }
+            }
+            console.log("GET /api/userparkings");
+            console.log("Response: ", JSON.stringify(curParkings));
             return res.status(200).send(parkings);
         });
 

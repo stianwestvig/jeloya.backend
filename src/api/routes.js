@@ -1,7 +1,3 @@
-function calculatePrice(parking) {
-    var parkTimeInSeconds = moment.duration(parking.end.diff(parking.start)) / 1000;
-    parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
-}
 var Configurer = function () {
     var moment = require("moment");
     var crypto = require("crypto");
@@ -31,13 +27,19 @@ var Configurer = function () {
 
     var isParkingEnded = function (parking) {
         return typeof(parking.end) !== "undefined";
-    }
+    };
 
     var generateGuid = function () {
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
             var r = crypto.randomBytes(1)[0] % 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         })
+    };
+
+    var calculatePrice = function (parking) {
+        var endMoment = parking.end ? parking.end : moment();
+        var parkTimeInSeconds = moment.duration(endMoment.diff(parking.start)) / 1000;
+        parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
     };
 
     var configure = function(app) {

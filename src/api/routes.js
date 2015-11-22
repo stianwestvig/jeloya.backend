@@ -39,7 +39,7 @@ var Configurer = function () {
     var calculatePrice = function (parking) {
         var endMoment = parking.end ? parking.end : moment();
         var parkTimeInSeconds = moment.duration(endMoment.diff(parking.start)) / 1000;
-        parking.price = Math.round(parkTimeInSeconds * pricePerSecond);
+        return Math.round(parkTimeInSeconds * pricePerSecond);
     };
 
     var configure = function(app) {
